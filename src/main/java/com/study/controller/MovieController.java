@@ -5,62 +5,66 @@ import com.study.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("movies")
 public class MovieController {
 
     @Autowired
     private MovieService movieService;
 
-    @GetMapping("/movies")
+    @GetMapping("/findAll")
     public String findAll(Model model) {
         model.addAttribute("movies", movieService.findAll());
         return "tables/movies";
     }
 
-    @GetMapping("/addMovie")
+    @GetMapping("/JSON")
+    @ResponseBody
+    public Iterable findAll() {
+        return movieService.findAll();
+    }
+
+    @GetMapping("/add")
     public String addPage() {
         return "createPages/createMovie";
     }
 
-    @PostMapping("/addMovie")
+    @PostMapping("/add")
     public String add(@ModelAttribute("movies") Movie movie) {
         movieService.save(movie);
-        return "redirect:/movies";
+        return "redirect:/movies/findAll";
     }
 
-    @GetMapping("/deleteMovie/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         movieService.deleteById(id);
-        return "redirect:/movies";
+        return "redirect:/movies/findAll";
     }
 
-    @GetMapping("/deleteAllMovies")
+    @GetMapping("/deleteAll")
     public String deleteAll() {
         movieService.deleteAll();
-        return "redirect:/movies";
+        return "redirect:/movies/findAll";
     }
 
-    @GetMapping("/updateMovie/{id}")
+    @GetMapping("/update/{id}")
     public String updatePage(@PathVariable("id") int id, Model model) {
         model.addAttribute("movie", movieService.findById(id));
         return "updatePages/updateMovie";
     }
 
-    @PostMapping("/updateMovie")
+    @PostMapping("/update")
     public String update(@ModelAttribute("movie") Movie movie) {
         movieService.save(movie);
-        return "redirect:/movies";
+        return "redirect:/movies/findAll";
     }
 
-    @PostMapping("/movies")
+    @PostMapping("/findAll")
     public String addFromFile(@ModelAttribute("file") MultipartFile file) {
         movieService.addFromFile(file);
-        return "redirect:/movies";
+        return "redirect:/movies/findAll";
     }
 }

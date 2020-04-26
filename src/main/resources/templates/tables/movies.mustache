@@ -3,8 +3,8 @@
 <body>
 <div>
     <b><a href="/">Back</a></b>
-    <b><a href="/addMovie">Create new</a></b>
-    <b><a href="/deleteAllMovies">Clear all</a></b>
+    <b><a href="add">Create new</a></b>
+    <b><a href="deleteAll">Clear all</a></b>
 </div>
 <h1>Movies</h1>
 <div>
@@ -13,16 +13,21 @@
         <input type="file" name="file">
         <input type="submit" value="Send">
     </form>
+    <form enctype="multipart/form-data" method="post" action="JSON">
+        Create genres from JSON
+        <input type="file" name="file" accept="application/json">
+        <input type="submit" value="Send">
+    </form>
 </div>
 <div>
     <table border="1">
         <tr>
             <th><b>Id</b></th>
             <th>Name</th>
+            <th>Year</th>
             <th>Country</th>
             <th>Genre</th>
             <th>Description</th>
-            <th>Year</th>
             <th>Rating</th>
             <th>Price</th>
 
@@ -31,14 +36,14 @@
             <tr>
                 <td><b>{{id}}</b></td>
                 <td>{{name}}</td>
+                <td>{{year}}</td>
                 <td>{{country}}</td>
                 <td>{{genre}}</td>
                 <td>{{description}}</td>
-                <td>{{year}}</td>
                 <td>{{rating}}</td>
                 <td>{{price}}</td>
-                <td><a href="/updateMovie/{{id}}">Update</a></td>
-                <td><a href="/deleteMovie/{{id}}">Delete</a></td>
+                <td><a href="update/{{id}}">Update</a></td>
+                <td><a href="delete/{{id}}">Delete</a></td>
             </tr>
         {{/movies}}
     </table>

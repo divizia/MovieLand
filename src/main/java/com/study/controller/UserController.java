@@ -5,62 +5,66 @@ import com.study.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("users")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @GetMapping("/users")
+    @GetMapping("/findAll")
     public String findAll(Model model) {
         model.addAttribute("users", userService.findAll());
         return "tables/users";
     }
 
-    @GetMapping("/addUser")
+    @GetMapping("/JSON")
+    @ResponseBody
+    public Iterable findAll() {
+        return userService.findAll();
+    }
+
+    @GetMapping("/add")
     public String addPage() {
         return "createPages/createUser";
     }
 
-    @PostMapping("/addUser")
+    @PostMapping("/add")
     public String add(@ModelAttribute("user") User1 user) {
         userService.save(user);
-        return "redirect:/users";
+        return "redirect:/users/findAll";
     }
 
-    @GetMapping("/deleteUser/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         userService.deleteById(id);
-        return "redirect:/users";
+        return "redirect:/users/findAll";
     }
 
-    @GetMapping("/deleteAllUsers")
+    @GetMapping("/deleteAll")
     public String deleteAll() {
         userService.deleteAll();
-        return "redirect:/users";
+        return "redirect:/users/findAll";
     }
 
-    @GetMapping("/updateUser/{id}")
+    @GetMapping("/update/{id}")
     public String updatePage(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.findById(id));
         return "updatePages/updateUser";
     }
 
-    @PostMapping("/updateUser")
+    @PostMapping("/update")
     public String update(@ModelAttribute("user") User1 user) {
         userService.save(user);
-        return "redirect:/users";
+        return "redirect:/users/findAll";
     }
 
-    @PostMapping("/users")
+    @PostMapping("/findAll")
     public String addFromFile(@ModelAttribute("file") MultipartFile file) {
         userService.addFromFile(file);
-        return "redirect:/users";
+        return "redirect:/users/findAll";
     }
 }

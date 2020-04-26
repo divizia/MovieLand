@@ -2,11 +2,11 @@
 <html>
 <body>
 <div>
-    <b><a href="/genres">Cancel</a></b>
+    <b><a href="/genres/findAll">Cancel</a></b>
 </div>
 <div>
     <h1>Update Genre</h1>
-    <form method="post" action="/updateGenre">
+    <form method="post" action="/genres/update">
         <p>Id</p>
         <input type="text" name="id" readonly="readonly" value="{{genre.id}}"/>
         <p>Name</p>

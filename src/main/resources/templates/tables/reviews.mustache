@@ -3,14 +3,19 @@
 <body>
 <div>
     <b><a href="/">Back</a></b>
-    <b><a href="/addReview">Create new</a></b>
-    <b><a href="/deleteAllReviews">Clear all</a></b>
+    <b><a href="add">Create new</a></b>
+    <b><a href="deleteAll">Clear all</a></b>
 </div>
 <h1>Reviews</h1>
 <div>
     <form enctype="multipart/form-data" method="post">
         Create reviews from file
         <input type="file" name="file">
+        <input type="submit" value="Send">
+    </form>
+    <form enctype="multipart/form-data" method="post" action="JSON">
+        Create genres from JSON
+        <input type="file" name="file" accept="application/json">
         <input type="submit" value="Send">
     </form>
 </div>
@@ -28,8 +33,8 @@
                 <td>{{movie}}</td>
                 <td>{{username}}</td>
                 <td>{{text}}</td>
-                <td><a href="/updateReview/{{id}}">Update</a></td>
-                <td><a href="/deleteReview/{{id}}">Delete</a></td>
+                <td><a href="update/{{id}}">Update</a></td>
+                <td><a href="delete/{{id}}">Delete</a></td>
             </tr>
         {{/reviews}}
     </table>

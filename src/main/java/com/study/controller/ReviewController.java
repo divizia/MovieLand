@@ -5,63 +5,67 @@ import com.study.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 @Controller
+@RequestMapping("reviews")
 public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
 
-    @GetMapping("/reviews")
+    @GetMapping("/findAll")
     public String findAll(Model model) {
         model.addAttribute("reviews", reviewService.findAll());
         return "tables/reviews";
     }
 
-    @GetMapping("/addReview")
+    @GetMapping("/JSON")
+    @ResponseBody
+    public Iterable findAll() {
+        return reviewService.findAll();
+    }
+
+    @GetMapping("/add")
     public String addPage() {
         return "createPages/createReview";
     }
 
-    @PostMapping("/addReview")
+    @PostMapping("/add")
     public String add(@ModelAttribute("review") Review review) {
         reviewService.save(review);
-        return "redirect:/reviews";
+        return "redirect:/reviews/findAll";
     }
 
-    @GetMapping("/deleteReview/{id}")
+    @GetMapping("/delete/{id}")
     public String delete(@PathVariable("id") int id) {
         reviewService.deleteById(id);
-        return "redirect:/reviews";
+        return "redirect:/reviews/findAll";
     }
 
-    @GetMapping("/deleteAllReviews")
+    @GetMapping("/deleteAll")
     public String deleteAll() {
         reviewService.deleteAll();
-        return "redirect:/reviews";
+        return "redirect:/reviews/findAll";
     }
 
-    @GetMapping("/updateReview/{id}")
+    @GetMapping("/update/{id}")
     public String updatePage(@PathVariable("id") int id, Model model) {
         model.addAttribute("review", reviewService.findById(id));
         return "updatePages/updateReview";
     }
 
-    @PostMapping("/updateReview")
+    @PostMapping("/update")
     public String update(@ModelAttribute("review") Review review) {
         reviewService.save(review);
-        return "redirect:/reviews";
+        return "redirect:/reviews/findAll";
     }
 
-    @PostMapping("/reviews")
+    @PostMapping("/findAll")
     public String addFromFile(@ModelAttribute("file") MultipartFile file) {
         reviewService.addFromFile(file);
-        return "redirect:/reviews";
+        return "redirect:/reviews/findAll";
     }
 
   /*  @PostMapping("/addReview")
