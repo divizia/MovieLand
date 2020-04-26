@@ -15,6 +15,18 @@ public class Movie {
     private int year;
     private double rating, price;
 
+    public Movie() {}
+
+    public Movie(String name, int year, String country, String genre, String description, double rating, double price) {
+        this.name = name;
+        this.country = country;
+        this.genre = genre;
+        this.description = description;
+        this.year = year;
+        this.rating = rating;
+        this.price = price;
+    }
+
     public int getId() { return id; }
 
     public void setId(int id) { this.id = id; }

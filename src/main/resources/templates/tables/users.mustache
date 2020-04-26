@@ -7,30 +7,32 @@
     <b><a href="/deleteAllUsers">Clear all</a></b>
 </div>
 <h1>Users</h1>
-<form method="post" action="/filter">
-    <input type="text" name="filter">
-    <button type="submit">Find by ID</button>
-</form>
-<b></b>
 <div>
-<table border="1">
-    <tr>
-        <th><b>Id</b></th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Nickname</th>
-    </tr>
-    {{#users}}
-    <tr>
-        <td><b>{{id}}</b></td>
-        <td>{{name}}</td>
-        <td>{{email}}</td>
-        <td>{{nickname}}</td>
-        <td><a href="/updateUser/{{id}}">Update</a></td>
-        <td><a href="/deleteUser/{{id}}">Delete</a></td>
-    </tr>
-    {{/users}}
-</table>
+    <form enctype="multipart/form-data" method="post">
+        Create users from file
+        <input type="file" name="file">
+        <input type="submit" value="Send">
+    </form>
+</div>
+<div>
+    <table border="1">
+        <tr>
+            <th><b>Id</b></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Nickname</th>
+        </tr>
+        {{#users}}
+            <tr>
+                <td><b>{{id}}</b></td>
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{nickname}}</td>
+                <td><a href="/updateUser/{{id}}">Update</a></td>
+                <td><a href="/deleteUser/{{id}}">Delete</a></td>
+            </tr>
+        {{/users}}
+    </table>
 </div>
 </body>
 </html>

@@ -13,6 +13,14 @@ public class Review {
     private int id;
     private String movie, username, text;
 
+    public Review() {}
+
+    public Review(String movie, String username, String text) {
+        this.movie = movie;
+        this.username = username;
+        this.text = text;
+    }
+
     public int getId() {
         return id;
     }

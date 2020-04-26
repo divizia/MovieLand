@@ -7,26 +7,28 @@
     <b><a href="/deleteAllGenres">Clear all</a></b>
 </div>
 <h1>Genres</h1>
-<form method="post" action="/filter">
-    <input type="text" name="filter">
-    <button type="submit">Find by ID</button>
-</form>
-<b></b>
 <div>
-<table border="1">
-    <tr>
-        <th><b>Id</b></th>
-        <th>Name</th>
-    </tr>
-    {{#genres}}
-    <tr>
-        <td><b>{{id}}</b></td>
-        <td>{{name}}</td>
-        <td><a href="/updateGenre/{{id}}">Update</a></td>
-        <td><a href="/deleteGenre/{{id}}">Delete</a></td>
-    </tr>
-    {{/genres}}
-</table>
+    <form enctype="multipart/form-data" method="post">
+        Create genres from file
+        <input type="file" name="file">
+        <input type="submit" value="Send">
+    </form>
+</div>
+<div>
+    <table border="1">
+        <tr>
+            <th><b>Id</b></th>
+            <th>Name</th>
+        </tr>
+        {{#genres}}
+            <tr>
+                <td><b>{{id}}</b></td>
+                <td>{{name}}</td>
+                <td><a href="/updateGenre/{{id}}">Update</a></td>
+                <td><a href="/deleteGenre/{{id}}">Delete</a></td>
+            </tr>
+        {{/genres}}
+    </table>
 </div>
 </body>
 </html>

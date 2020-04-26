@@ -7,11 +7,13 @@
     <b><a href="/deleteAllReviews">Clear all</a></b>
 </div>
 <h1>Reviews</h1>
-<form method="post" action="/filter">
-    <input type="text" name="filter">
-    <button type="submit">Find by ID</button>
-</form>
-<b></b>
+<div>
+    <form enctype="multipart/form-data" method="post">
+        Create reviews from file
+        <input type="file" name="file">
+        <input type="submit" value="Send">
+    </form>
+</div>
 <div>
     <table border="1">
         <tr>
@@ -21,14 +23,14 @@
             <th>Text</th>
         </tr>
         {{#reviews}}
-        <tr>
-            <td><b>{{id}}</b></td>
-            <td>{{movie}}</td>
-            <td>{{username}}</td>
-            <td>{{text}}</td>
-            <td><a href="/updateReview/{{id}}">Update</a></td>
-            <td><a href="/deleteReview/{{id}}">Delete</a></td>
-        </tr>
+            <tr>
+                <td><b>{{id}}</b></td>
+                <td>{{movie}}</td>
+                <td>{{username}}</td>
+                <td>{{text}}</td>
+                <td><a href="/updateReview/{{id}}">Update</a></td>
+                <td><a href="/deleteReview/{{id}}">Delete</a></td>
+            </tr>
         {{/reviews}}
     </table>
 </div>

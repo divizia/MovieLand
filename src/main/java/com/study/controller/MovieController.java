@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class MovieController {
@@ -54,6 +55,12 @@ public class MovieController {
     @PostMapping("/updateMovie")
     public String update(@ModelAttribute("movie") Movie movie) {
         movieService.save(movie);
+        return "redirect:/movies";
+    }
+
+    @PostMapping("/movies")
+    public String addFromFile(@ModelAttribute("file") MultipartFile file) {
+        movieService.addFromFile(file);
         return "redirect:/movies";
     }
 }
