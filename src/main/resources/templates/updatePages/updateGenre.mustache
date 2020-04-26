@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/genres">Cancel</a></b>
+</div>
+<div>
+    <h1>Update Genre</h1>
+    <form method="post" action="/updateGenre">
+        <p>Id</p>
+        <input type="text" name="id" readonly="readonly" value="{{genre.id}}"/>
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter name" value="{{genre.name}}"/>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>

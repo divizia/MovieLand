@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/reviews">Cancel</a></b>
+</div>
+<div>
+    <h1>Update Review</h1>
+    <form method="post" action="/updateReview">
+        <p>Id</p>
+        <input type="text" name="id" readonly="readonly" value="{{review.id}}"/>
+        <p>Movie</p>
+        <input type="text" name="movie" placeholder="Enter movie" value="{{review.movie}}"/>
+        <p>Username</p>
+        <input type="text" name="username" placeholder="Enter username" value="{{review.username}}"/>
+        <p>Text</p>
+        <input type="text" name="text" placeholder="Enter text" value="{{review.text}}"/>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>

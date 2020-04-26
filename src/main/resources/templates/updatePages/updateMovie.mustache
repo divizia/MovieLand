@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/movies">Cancel</a></b>
+</div>
+<div>
+    <h1>Update Movie</h1>
+    <form method="post" action="/updateMovie">
+        <p>Id</p>
+        <input type="text" name="id" readonly="readonly" value="{{movie.id}}"/>
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter name" value="{{movie.name}}"/>
+        <p>Country</p>
+        <input type="text" name="country" placeholder="Enter country" value="{{movie.country}}"/>
+        <p>Genre</p>
+        <input type="text" name="genre" placeholder="Enter genre" value="{{movie.genre}}"/>
+        <p>Description</p>
+        <input type="text" name="description" placeholder="Enter description" value="{{movie.description}}"/>
+        <p>Year</p>
+        <input type="text" name="year" placeholder="Enter year" value="{{movie.year}}"/>
+        <p>Rating</p>
+        <input type="text" name="rating" placeholder="Enter rating" value="{{movie.rating}}"/>
+        <p>Price</p>
+        <input type="text" name="price" placeholder="Enter price" value="{{movie.price}}"/>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>

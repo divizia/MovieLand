@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/">Back</a></b>
+    <b><a href="/addMovie">Create new</a></b>
+    <b><a href="/deleteAllMovies">Clear all</a></b>
+</div>
+<h1>Movies</h1>
+<form method="post" action="/filter">
+    <input type="text" name="filter">
+    <button type="submit">Find by ID</button>
+</form>
+<b></b>
+<div>
+<table border="1">
+    <tr>
+        <th><b>Id</b></th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>Genre</th>
+        <th>Description</th>
+        <th>Year</th>
+        <th>Rating</th>
+        <th>Price</th>
+
+    </tr>
+    {{#movies}}
+    <tr>
+        <td><b>{{id}}</b></td>
+        <td>{{name}}</td>
+        <td>{{country}}</td>
+        <td>{{genre}}</td>
+        <td>{{description}}</td>
+        <td>{{year}}</td>
+        <td>{{rating}}</td>
+        <td>{{price}}</td>
+        <td><a href="/updateMovie/{{id}}">Update</a></td>
+        <td><a href="/deleteMovie/{{id}}">Delete</a></td>
+    </tr>
+    {{/movies}}
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/users">Cancel</a></b>
+</div>
+<div>
+    <h1>Update User</h1>
+    <form method="post" action="/updateUser">
+        <p>Id</p>
+        <input type="text" name="id" readonly="readonly" value="{{user.id}}"/>
+        <p>Name</p>
+        <input type="text" name="name" placeholder="Enter name" value="{{user.name}}"/>
+        <p>Email</p>
+        <input type="text" name="email" placeholder="Enter email" value="{{user.email}}"/>
+        <p>Nickname</p>
+        <input type="text" name="nickname" placeholder="Enter nickname" value="{{user.nickname}}"/>
+
+        <button type="submit">Update</button>
+    </form>
+</div>
+</body>
+</html>

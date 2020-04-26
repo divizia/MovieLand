@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<body>
+<div>
+    <b><a href="/">Back</a></b>
+    <b><a href="/addReview">Create new</a></b>
+    <b><a href="/deleteAllReviews">Clear all</a></b>
+</div>
+<h1>Reviews</h1>
+<form method="post" action="/filter">
+    <input type="text" name="filter">
+    <button type="submit">Find by ID</button>
+</form>
+<b></b>
+<div>
+    <table border="1">
+        <tr>
+            <th><b>Id</b></th>
+            <th>Movie</th>
+            <th>User</th>
+            <th>Text</th>
+        </tr>
+        {{#reviews}}
+        <tr>
+            <td><b>{{id}}</b></td>
+            <td>{{movie}}</td>
+            <td>{{username}}</td>
+            <td>{{text}}</td>
+            <td><a href="/updateReview/{{id}}">Update</a></td>
+            <td><a href="/deleteReview/{{id}}">Delete</a></td>
+        </tr>
+        {{/reviews}}
+    </table>
+</div>
+</body>
+</html>
