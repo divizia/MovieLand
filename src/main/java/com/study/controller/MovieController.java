@@ -67,4 +67,10 @@ public class MovieController {
         movieService.addFromFile(file);
         return "redirect:/movies/findAll";
     }
+
+    @PostMapping("/JSON")
+    public String addFromJSON(@ModelAttribute("file") MultipartFile file) {
+        movieService.addFromJSON(file);
+        return "redirect:/movies/findAll";
+    }
 }

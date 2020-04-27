@@ -1,5 +1,6 @@
 package com.study.service;
 
+import com.google.gson.Gson;
 import com.study.entity.Genre;
 import com.study.entity.Movie;
 import com.study.repository.MovieRepo;
@@ -10,6 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class MovieService {
@@ -47,6 +50,17 @@ public class MovieService {
                         Double.parseDouble(reader.readLine().replaceAll("price:", ""))));
                 reader.readLine();
             }
+            reader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void addFromJSON(MultipartFile file) {
+        try {
+            InputStreamReader reader = new InputStreamReader(file.getInputStream());
+            List<Movie> list = Arrays.asList(new Gson().fromJson(reader, Movie[].class));
+            movieRepo.saveAll(list);
             reader.close();
         } catch (IOException e) {
             e.printStackTrace();

@@ -69,11 +69,10 @@ public class GenreController {
         return "redirect:/genres/findAll";
     }
 
-   /* @PostMapping("/genresJSON")
-    @RequestBody
+    @PostMapping("/JSON")
     public String addFromJSON(@ModelAttribute("file") MultipartFile file) {
-        genreService.addFromFile(file);
+        genreService.addFromJSON(file);
         return "redirect:/genres/findAll";
-    }*/
+    }
 
 }

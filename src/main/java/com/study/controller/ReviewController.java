@@ -68,6 +68,12 @@ public class ReviewController {
         return "redirect:/reviews/findAll";
     }
 
+    @PostMapping("/JSON")
+    public String addFromJSON(@ModelAttribute("file") MultipartFile file) {
+        reviewService.addFromJSON(file);
+        return "redirect:/reviews/findAll";
+    }
+
   /*  @PostMapping("/addReview")
     public String add(@RequestParam String movie, @RequestParam String username, @RequestParam String review) {
         reviewService.save(new Review(movie, username, review));

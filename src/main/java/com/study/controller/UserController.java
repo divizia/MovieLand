@@ -67,4 +67,10 @@ public class UserController {
         userService.addFromFile(file);
         return "redirect:/users/findAll";
     }
+
+    @PostMapping("/JSON")
+    public String addFromJSON(@ModelAttribute("file") MultipartFile file) {
+        userService.addFromJSON(file);
+        return "redirect:/users/findAll";
+    }
 }
